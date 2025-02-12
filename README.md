@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LitterBox
 
 ![single grumpy cat](https://github.com/user-attachments/assets/20030454-55b8-4473-b7b7-f65bb7150d51)
@@ -202,3 +203,7 @@ This project incorporates the following open-source components and acknowledges 
 ![summary](https://github.com/user-attachments/assets/b547cc5a-d1aa-482a-8e43-2d6b9523bdfd)
 
 
+=======
+# ThreatX-
+a AI based malware that used the deep learning models for the detection of malware or malicious file !
+>>>>>>> bd3c1f3006f6fed7b9a61fb803e61b05844c1a5e
