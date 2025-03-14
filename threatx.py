@@ -26,8 +26,7 @@ def main():
     # Enable debug mode based on the `--debug` flag
     if args.debug:
         app.config['DEBUG'] = True
-        app.config['application']['debug'] = True  # Optional if your custom config also uses it
-
+        app.config['application']['debug'] = True  
     # Set up logging based on the debug mode
     setup_logging(app)
     # Run the app

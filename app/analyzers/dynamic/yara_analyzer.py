@@ -27,7 +27,6 @@ class YaraDynamicAnalyzer(DynamicAnalyzer):
             stdout, stderr = process.communicate(timeout=tool_config['timeout'])
             matches = self._parse_output(stdout)
 
-            # Map the matched strings to the rule definitions
             self._map_output_to_rule_strings(matches)
             
             self.results = {
