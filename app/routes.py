@@ -138,6 +138,13 @@ def register_routes(app):
                 app.logger.debug(f"Static analysis results saved to: {static_results_path}")
                 
             elif analysis_type == 'dynamic':
+                # Check if file is a .lnk file (not executable)
+                if not is_pid and file_path and file_path.lower().endswith('.lnk'):
+                    app.logger.error(f"Cannot perform dynamic analysis on .lnk file: {file_path}")
+                    return jsonify({
+                        'error': 'Dynamic analysis not supported for .lnk files',
+                        'details': '.lnk files are shortcuts and cannot be executed directly. Please analyze the target file instead.'
+                    }), 400
 
                 # POST request - Get command line arguments if provided
                 try:

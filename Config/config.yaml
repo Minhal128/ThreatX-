@@ -20,7 +20,7 @@ utils:
 
 analysis:
   process:
-    init_wait_time: 5  # Time in seconds to wait for payload initialization
+    init_wait_time: 3  # Time in seconds to wait for payload initialization (reduced from 5)
   
   static:
     yara:
@@ -28,19 +28,19 @@ analysis:
       tool_path: ".\\Scanners\\Yara\\yara64.exe"
       command: "{tool_path} -s -m {rules_path} {file_path}"
       rules_path: ".\\Scanners\\Yara\\rules\\LitterBox.yar"
-      timeout: 120
+      timeout: 60
     
     checkplz:
       enabled: true
       tool_path: ".\\Scanners\\CheckPlz\\CheckPlz.exe"
       command: "{tool_path} -m -r -f {file_path}"
-      timeout: 120
+      timeout: 60
 
     stringnalyzer:
       enabled: true
       tool_path: ".\\Scanners\\Stringnalyzer\\Stringnalyzer.exe "
       command: "{tool_path} --wide -f {file_path}"
-      timeout: 120
+      timeout: 60
 
   dynamic:
     yara:
@@ -48,44 +48,44 @@ analysis:
       tool_path: ".\\Scanners\\Yara\\yara64.exe"
       command: "{tool_path} -s -m {rules_path} {pid}"
       rules_path: ".\\Scanners\\Yara\\rules\\LitterBox.yar"
-      timeout: 120
+      timeout: 60
 
     pe_sieve:
       enabled: true
       tool_path: ".\\Scanners\\PE-Sieve\\pe-sieve.exe"
       command: "{tool_path} /pid {pid} /threads /data 3 /iat 3 /obfusc 3 /shellc 3 /dir .\\Scanners\\PE-Sieve\\analysis "
-      timeout: 120
+      timeout: 60
 
     hollows_hunter:
       enabled: true
       tool_path: ".\\Scanners\\HollowsHunter\\hollows_hunter.exe"
       command: "{tool_path} /threads /data 3 /iat 3 /obfusc 3 /hooks /shellc 3 /json /jlvl 2 /quiet /ofilter 2" #  removed process dump large disk usage /dir .\\Scanners\\HollowsHunter\\analysis
-      timeout: 600
+      timeout: 90
 
     moneta:
       enabled: true
       tool_path: ".\\Scanners\\Moneta\\Moneta64.exe"
       command: "{tool_path} -m ioc -p {pid} --option from-base suppress-banner"
-      timeout: 360
+      timeout: 90
     
     patriot:
       enabled: true
       tool_path: ".\\Scanners\\Patriot\\Patriot.exe"
       command: "{tool_path} -p {pid}"
-      timeout: 120
+      timeout: 60
 
     hsb:
       enabled: true
       tool_path: ".\\Scanners\\HuntSleepingBeacons\\Hunt-Sleeping-Beacons.exe"
       command: "{tool_path} -p {pid}"
-      timeout: 360
+      timeout: 90
 
     rededr:
       enabled: true
-      etw_wait_time: 10  # Time in seconds to wait for ETW setup
+      etw_wait_time: 5  # Time in seconds to wait for ETW setup (reduced from 10)
       tool_path: ".\\Scanners\\RedEdr\\RedEdr.exe"
       command: "{tool_path} -e --trace {process_name}"
-      timeout: 120
+      timeout: 60
 
 
 
